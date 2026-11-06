@@ -132,7 +132,7 @@ export default function Home() {
       }
 
       const response = await fetch(
-        "http://127.0.0.1:5000/api/tts",
+        "https://vocalis-q9qf.onrender.com/api/tts",
         {
           method: "POST",
           headers: {
@@ -219,7 +219,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:5000/api/tts",
+        "https://vocalis-q9qf.onrender.com/api/tts",
         {
           method: "POST",
           headers: {
@@ -449,3 +449,4 @@ export default function Home() {
     </div>
   );
 }
+fetch
