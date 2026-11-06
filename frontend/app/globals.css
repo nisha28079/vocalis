@@ -1,0 +1,268 @@
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+:root {
+  color-scheme: light;
+  --background: #f5f7f8;
+  --foreground: #334155;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --scrollbar: #cbd5e1;
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #0f1720;
+  --foreground: #e2e8f0;
+  --surface: #17212d;
+  --surface-muted: #1e293b;
+  --border: #334155;
+  --muted: #94a3b8;
+  --scrollbar: #475569;
+}
+
+/* =========================================================
+   BASE PAGE
+   ========================================================= */
+
+html {
+  min-height: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+/* =========================================================
+   SMOOTH THEME TRANSITIONS
+   ========================================================= */
+
+button,
+select,
+textarea,
+input,
+aside,
+header,
+main,
+section,
+article {
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html.dark *::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(14, 165, 233, 0.16);
+  color: #0f172a;
+}
+
+html.dark ::selection {
+  background: rgba(45, 212, 191, 0.2);
+  color: #ccfbf1;
+}
+
+/* =========================================================
+   FORM ELEMENTS
+   ========================================================= */
+
+button,
+select,
+textarea,
+input {
+  font-family: inherit;
+}
+
+textarea {
+  outline: none;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  color-scheme: dark;
+}
+
+/* =========================================================
+   RANGE SLIDERS
+   ========================================================= */
+
+input[type="range"] {
+  accent-color: #0ea5e9;
+}
+
+html.dark input[type="range"] {
+  accent-color: #2dd4bf;
+}
+
+/* =========================================================
+   DARK MODE SURFACE UTILITIES
+   Use these classes in components where needed.
+   ========================================================= */
+
+html.dark .theme-surface {
+  background-color: var(--surface);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+html.dark .theme-surface-muted {
+  background-color: var(--surface-muted);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+html.dark .theme-muted-text {
+  color: var(--muted);
+}
+
+/* =========================================================
+   BETTER INTERACTION
+   ========================================================= */
+
+button,
+a,
+select,
+input[type="range"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(14, 165, 233, 0.45);
+  outline-offset: 2px;
+}
+
+html.dark button:focus-visible,
+html.dark a:focus-visible,
+html.dark select:focus-visible,
+html.dark textarea:focus-visible,
+html.dark input:focus-visible {
+  outline-color: rgba(45, 212, 191, 0.65);
+}
+
+/* =========================================================
+   HERO TITLE — SUBTLE FLOAT
+   ========================================================= */
+
+@keyframes floatTitle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================================
+   HERO DESCRIPTION — SOFT MOVING HIGHLIGHT
+   ========================================================= */
+
+@keyframes textHighlight {
+  0% {
+    left: -35%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  75% {
+    left: 110%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
